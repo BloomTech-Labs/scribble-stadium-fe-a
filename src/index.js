@@ -8,6 +8,13 @@ import {
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 
+// Redux
+import { applyMiddleware, createStore } from 'redux'; // createStore deprecated
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux';;
+import rootReducers from './state/reducers/index';
+import thunk from 'redux-thunk';
+
 import 'antd/dist/antd.less';
 
 import { NotFoundPage } from './components/pages/NotFound';
@@ -20,15 +27,20 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { ImageList } from './components/pages/ImageList';
+import Admin from './components/pages/Admin/Admin';
+
+const store = configureStore(rootReducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   </Router>,
   document.getElementById('root')
-);
+);  
 
 function App() {
   // The reason to declare App this way is so that we can use any helper functions we'd need for business logic, in our case auth.
@@ -57,6 +69,7 @@ function App() {
         <SecureRoute path="/example-list" component={ExampleListPage} />
         <SecureRoute path="/profile-list" component={ProfileListPage} />
         <SecureRoute path="/datavis" component={ExampleDataViz} />
+        <SecureRoute path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>
