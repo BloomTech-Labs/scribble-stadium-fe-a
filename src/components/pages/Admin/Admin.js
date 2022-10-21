@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useOktaAuth } from '@okta/okta-react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import AdminHeader from '../../common/Admin/AdminHeader';
 // import AdminSideBar from '../../common/Admin/AdminSidebar';
@@ -7,7 +7,7 @@ import StoryManager from './StoryManager/StoryManager';
 import ParentFooter from '../../common/ParentFooter';
 
 const Admin = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useOktaAuth();
 
   return (
     isAuthenticated && (
@@ -16,7 +16,7 @@ const Admin = () => {
         <div className="main">
           {/* <AdminSideBar /> */}
           <div className="container">
-            {/* <StoryManager/> */}
+            <StoryManager />
             <Switch>
               <Route path="/admin/storymanager" component={StoryManager} />
             </Switch>

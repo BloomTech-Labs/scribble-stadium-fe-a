@@ -9,9 +9,9 @@ import {
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 
 // Redux
-import { applyMiddleware, createStore } from 'redux'; // createStore deprecated
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux';;
+// import { applyMiddleware, createStore } from 'redux'; // createStore deprecated
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import rootReducers from './state/reducers/index';
 import thunk from 'redux-thunk';
 
@@ -27,9 +27,14 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { ImageList } from './components/pages/ImageList';
-import Admin from './components/pages/Admin/Admin';
+import { Admin } from './components/pages/Admin';
 
-const store = configureStore(rootReducers, applyMiddleware(thunk));
+// const store = configureStore(rootReducers, applyMiddleware(thunk));
+
+const store = configureStore({
+  reducer: rootReducers,
+  middleware: [thunk],
+});
 
 ReactDOM.render(
   <Router>
@@ -40,7 +45,7 @@ ReactDOM.render(
     </React.StrictMode>
   </Router>,
   document.getElementById('root')
-);  
+);
 
 function App() {
   // The reason to declare App this way is so that we can use any helper functions we'd need for business logic, in our case auth.

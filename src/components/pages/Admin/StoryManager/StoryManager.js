@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 // import UploadStoryPopup from '../UploadStoryPopup';
 import { connect } from 'react-redux';
 // import StoryPopup from './StoryPopup';
-import 'antd/dist/antd.css'
-import { UploadOutlined } from '@ant-design/icons'
+import 'antd/dist/antd.css';
+import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 // import StoryBacklog from '../StoryBacklog';
 // import StoryDetails from '../StoryDetails';
@@ -30,7 +30,7 @@ const StoryManager = () => {
           <h2>Story Library</h2>
           <Upload>
             <Button
-              className="upload-button" 
+              className="upload-button"
               icon={<UploadOutlined />}
               onClick={() => setAddButtonState(true)}
               type="primary"
@@ -64,10 +64,10 @@ const StoryManager = () => {
           </div>
         </div> */}
       </div>
-      <UploadStoryPopup
+      {/* <UploadStoryPopup
         trigger={addButtonState}
         setTrigger={setAddButtonState}
-      />
+      /> */}
       {/* <StoryPopup
         story={story}
         trigger={storyState}
