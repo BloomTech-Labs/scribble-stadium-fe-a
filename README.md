@@ -8,7 +8,7 @@ For steps on how to work with this repository [please see here](https://bloomtec
 
 You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
-## Contributors
+## Contributor
 
 🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
