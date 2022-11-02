@@ -42,6 +42,7 @@ const StoryCard = props => {
         style={{
           width: 500,
           marginBottom: 10,
+          border: '5px solid lightgrey',
         }}
       >
         <p>Author: {storyData.author}</p>

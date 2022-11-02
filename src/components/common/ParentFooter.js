@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/ParentFooter.less';
-
 export default function ParentFooter(props) {
   // if no need to scroll go to the bottom of the page -> pass `no-scroll` by props
   const { layoutContainerCheck } = props;

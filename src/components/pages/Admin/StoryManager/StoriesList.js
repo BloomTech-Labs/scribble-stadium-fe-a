@@ -4,7 +4,7 @@ import StoryCard from './StoryCard';
 
 const StoriesList = () => {
   return (
-    <div>
+    <div className="stories-list">
       {dummyStoryData.map(storyData => {
         return <StoryCard key={storyData.id} storyData={storyData} />;
       })}

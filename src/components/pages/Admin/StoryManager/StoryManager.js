@@ -12,7 +12,7 @@ import { Button, Upload } from 'antd';
 import StoriesList from '../StoryManager/StoriesList';
 
 const StoryManager = () => {
-  const [addButtonState, setAddButtonState] = useState(false);
+  // const [addButtonState, setAddButtonState] = useState(false);
 
   // const [storyState, setStoryState] = useState(false);
 
@@ -28,16 +28,6 @@ const StoryManager = () => {
       <div className="library">
         <div className="library-top">
           <h2>Story Library</h2>
-          <Upload>
-            <Button
-              className="upload-button"
-              icon={<UploadOutlined />}
-              onClick={() => setAddButtonState(true)}
-              type="primary"
-            >
-              Upload
-            </Button>
-          </Upload>
         </div>
         <div className="library-body">
           <StoriesList />
