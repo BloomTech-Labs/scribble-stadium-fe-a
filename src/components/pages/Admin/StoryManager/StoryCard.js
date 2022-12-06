@@ -4,13 +4,13 @@ import { Card, Button, Modal, Form, Input } from 'antd';
 const { TextArea } = Input;
 
 const initialFormValues = {
-  title: '',
-  author: '',
-  description: '',
+  title: 'enter title here',
+  author: 'enter author',
+  description: 'enter description',
 };
 
 const StoryCard = props => {
-  const { storyData } = props;
+  const { storyData, setStoryData } = props;
   const [formValues, setFormValues] = useState(initialFormValues);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -30,6 +30,12 @@ const StoryCard = props => {
   const submit = e => {
     e.preventDefault();
     console.log('changes made');
+    // setStoryData({
+    //   ...storyData,
+    //   storyData[title]:
+
+    // });
+    // console.log([...storyData]);
   };
 
   const editBtnStyle = {
@@ -88,6 +94,7 @@ const StoryCard = props => {
             />
           </Form.Item>
         </Form>
+        {/* <Button onClick={() => submit}>Submit</Button> */}
       </Modal>
     </div>
   );
