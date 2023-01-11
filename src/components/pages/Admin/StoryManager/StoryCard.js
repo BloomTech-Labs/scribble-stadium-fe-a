@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Card, Button, Modal } from 'antd';
+import { Card, Button, Modal, Form, Input } from 'antd';
+const { TextArea } = Input;
 
 const initialFormValues = {
-  title: '',
-  author: '',
-  description: '',
+  title: 'enter title here',
+  author: 'enter author',
+  description: 'enter description',
 };
 
 const StoryCard = props => {
-  const { storyData } = props;
-  const [formValues, setFormValues] = useState(initialFormValues);
   const [modalOpen, setModalOpen] = useState(false);
 
   const displayModal = () => {
@@ -26,6 +25,17 @@ const StoryCard = props => {
     setFormValues(e.target.value);
   };
 
+  const submit = e => {
+    e.preventDefault();
+    console.log('changes made');
+    // setStoryData({
+    //   ...storyData,
+    //   storyData[title]:
+
+    // });
+    // console.log([...storyData]);
+  };
+
   const editBtnStyle = {
     width: '4rem',
   };
@@ -35,7 +45,7 @@ const StoryCard = props => {
       <Card
         title={storyData.title}
         extra={
-          <Button style={editBtnStyle} onClick={displayModal} type="text">
+          <Button style={editBtnStyle} onClick={displayModal} type="default">
             Edit
           </Button>
         }
@@ -48,36 +58,40 @@ const StoryCard = props => {
         <p>Description: {storyData.description}</p>
         <p>Date Posted: {storyData.date_posted}</p>
       </Card>
-      <Modal open={modalOpen} onCancel={onCancel}>
-        <form>
-          <label>
-            Title
-            <input
+      <Modal style={{}} open={modalOpen} onOk={submit} onCancel={onCancel}>
+        <h2>Edit Story</h2>
+        <Form
+          style={{
+            marginTop: '30px',
+          }}
+        >
+          <Form.Item label="Title" name="title">
+            <Input
               type="text"
               name="title"
-              onChange={handleChanges}
-              value={storyData.title}
+              onChange={event => handleChanges(event)}
+              defaultValue={storyData.title}
             />
-          </label>
-          <label>
-            Author
-            <input
+          </Form.Item>
+          <Form.Item label="Author" name="author">
+            <Input
               type="text"
               name="author"
-              onChange={handleChanges}
-              value={storyData.author}
+              onChange={event => handleChanges(event)}
+              defaultValue={storyData.author}
             />
-          </label>
-          <label>
-            Description
-            <input
+          </Form.Item>
+          <Form.Item label="Description" name="description">
+            <TextArea
               type="text"
               name="description"
-              onChange={handleChanges}
-              value={storyData.description}
+              rows={13}
+              onChange={event => handleChanges(event)}
+              defaultValue={storyData.description}
             />
-          </label>
-        </form>
+          </Form.Item>
+        </Form>
+        {/* <Button onClick={() => submit}>Submit</Button> */}
       </Modal>
     </div>
   );

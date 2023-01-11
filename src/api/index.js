@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { stories } from './stories.js';
 
 // we will define a bunch of API calls here.
 const apiUrl = `${process.env.REACT_APP_API_URI}/profiles`;
@@ -34,13 +35,15 @@ const getDSData = (url, authState) => {
     .catch(err => err);
 };
 
-const apiAuthGet = authHeader => {
-  return axios.get(apiUrl, { headers: authHeader });
-};
+// const apiAuthGet = authHeader => {
+//   return axios.get(apiUrl, { headers: authHeader });
+// };
 
 const getProfileData = authState => {
   try {
-    return apiAuthGet(getAuthHeader(authState)).then(response => response.data);
+    return axios
+      .get('src/components/pages/Admin/StoryManager/stories.json')
+      .then(response => response.data);
   } catch (error) {
     return new Promise(() => {
       console.log(error);
@@ -49,4 +52,33 @@ const getProfileData = authState => {
   }
 };
 
-export { sleep, getExampleData, getProfileData, getDSData };
+const postStoryData = storyObj => {
+  try {
+    return axios.post(`${process.env.REACT_APP_API_URI}/stories`, storyObj);
+  } catch (error) {
+    return new Promise(() => {
+      console.log(error);
+      return [];
+    });
+  }
+};
+
+const getStoryData = () => {
+  try {
+    return stories;
+  } catch (error) {
+    return new Promise(() => {
+      console.log(error);
+      return [];
+    });
+  }
+};
+
+export {
+  sleep,
+  getExampleData,
+  getProfileData,
+  getDSData,
+  postStoryData,
+  getStoryData,
+};
