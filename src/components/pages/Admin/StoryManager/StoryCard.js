@@ -40,8 +40,8 @@ const StoryCard = props => {
           </Button>
         }
         style={{
-          width: 500,
-          marginBottom: 10,
+          width: '25vw',
+          border: '1px solid #d9d9d9',
         }}
       >
         <p>Author: {storyData.author}</p>
