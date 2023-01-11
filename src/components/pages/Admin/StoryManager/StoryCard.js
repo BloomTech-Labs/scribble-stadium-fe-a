@@ -21,19 +21,19 @@ const StoryCard = props => {
     setModalOpen(false);
   };
 
-  const handleChanges = e => {
-    setFormValues(e.target.value);
-  };
+  // const handleChanges = e => {
+  //   setFormValues(e.target.value);
+  // };
 
   const submit = e => {
     e.preventDefault();
     console.log('changes made');
-    // setStoryData({
-    //   ...storyData,
-    //   storyData[title]:
+    // setprops({
+    //   ...props,
+    //   props[title]:
 
     // });
-    // console.log([...storyData]);
+    // console.log([...props]);
   };
 
   const editBtnStyle = {
@@ -43,7 +43,7 @@ const StoryCard = props => {
   return (
     <div>
       <Card
-        title={storyData.title}
+        title={props.title}
         extra={
           <Button style={editBtnStyle} onClick={displayModal} type="default">
             Edit
@@ -54,9 +54,9 @@ const StoryCard = props => {
           border: '1px solid #d9d9d9',
         }}
       >
-        <p>Author: {storyData.author}</p>
-        <p>Description: {storyData.description}</p>
-        <p>Date Posted: {storyData.date_posted}</p>
+        <p>Author: {props.author}</p>
+        <p>Description: {props.description}</p>
+        <p>Date Posted: {props.date_posted}</p>
       </Card>
       <Modal style={{}} open={modalOpen} onOk={submit} onCancel={onCancel}>
         <h2>Edit Story</h2>
@@ -69,16 +69,16 @@ const StoryCard = props => {
             <Input
               type="text"
               name="title"
-              onChange={event => handleChanges(event)}
-              defaultValue={storyData.title}
+              // onChange={event => handleChanges(event)}
+              defaultValue={props.title}
             />
           </Form.Item>
           <Form.Item label="Author" name="author">
             <Input
               type="text"
               name="author"
-              onChange={event => handleChanges(event)}
-              defaultValue={storyData.author}
+              // onChange={event => handleChanges(event)}
+              defaultValue={props.author}
             />
           </Form.Item>
           <Form.Item label="Description" name="description">
@@ -86,8 +86,8 @@ const StoryCard = props => {
               type="text"
               name="description"
               rows={13}
-              onChange={event => handleChanges(event)}
-              defaultValue={storyData.description}
+              // onChange={event => handleChanges(event)}
+              defaultValue={props.description}
             />
           </Form.Item>
         </Form>
