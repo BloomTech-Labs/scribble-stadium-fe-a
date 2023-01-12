@@ -6,8 +6,9 @@ import { Button, Upload } from 'antd';
 import StoriesList from '../StoryManager/StoriesList';
 import './storyManager.css';
 
-const StoryManager = () => {
+const StoryManager = props => {
   const [addButtonState, setAddButtonState] = useState(false);
+  const { dummyStoryData } = props;
 
   return (
     <div className="story-manager">
@@ -42,7 +43,7 @@ const StoryManager = () => {
         </div>
       </div>
       <div className="library-right">
-        <StoriesList />
+        <StoriesList dummyStoryData={dummyStoryData} />
       </div>
     </div>
   );

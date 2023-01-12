@@ -3,11 +3,12 @@ import React from 'react';
 // import AdminSideBar from '../../common/Admin/AdminSidebar';
 import StoryManager from './StoryManager/StoryManager';
 import ParentFooter from '../../common/ParentFooter';
+import { dummyStoryData } from './StoryManager/dummyStoryData';
 
 const Admin = () => {
   return (
     <div className="main">
-      <StoryManager />
+      <StoryManager dummyStoryData={dummyStoryData} />
       <ParentFooter />
     </div>
   );

@@ -10,6 +10,7 @@ const initialFormValues = {
 };
 
 const StoryCard = props => {
+  const { storyData } = props;
   const [modalOpen, setModalOpen] = useState(false);
 
   const displayModal = () => {
@@ -43,7 +44,7 @@ const StoryCard = props => {
   return (
     <div>
       <Card
-        title={props.title}
+        title={storyData.title}
         extra={
           <Button style={editBtnStyle} onClick={displayModal} type="default">
             Edit
@@ -54,9 +55,9 @@ const StoryCard = props => {
           border: '1px solid #d9d9d9',
         }}
       >
-        <p>Author: {props.author}</p>
-        <p>Description: {props.description}</p>
-        <p>Date Posted: {props.date_posted}</p>
+        <p>Author: {storyData.author}</p>
+        <p>Description: {storyData.description}</p>
+        <p>Date Posted: {storyData.date_posted}</p>
       </Card>
       <Modal style={{}} open={modalOpen} onOk={submit} onCancel={onCancel}>
         <h2>Edit Story</h2>
@@ -70,7 +71,7 @@ const StoryCard = props => {
               type="text"
               name="title"
               // onChange={event => handleChanges(event)}
-              defaultValue={props.title}
+              defaultValue={storyData.title}
             />
           </Form.Item>
           <Form.Item label="Author" name="author">
@@ -78,7 +79,7 @@ const StoryCard = props => {
               type="text"
               name="author"
               // onChange={event => handleChanges(event)}
-              defaultValue={props.author}
+              defaultValue={storyData.author}
             />
           </Form.Item>
           <Form.Item label="Description" name="description">
@@ -87,7 +88,7 @@ const StoryCard = props => {
               name="description"
               rows={13}
               // onChange={event => handleChanges(event)}
-              defaultValue={props.description}
+              defaultValue={storyData.description}
             />
           </Form.Item>
         </Form>

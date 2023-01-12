@@ -21,4 +21,12 @@ export const dummyStoryData = [
       'a biography for kids to learn about the man who invented the lightbulb',
     date_posted: 'Nov 28th, 2018',
   },
+  {
+    id: 3,
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: 'J.K. Rowling',
+    description:
+      'Harry Potter in his second year at Hogwarts. What will he experience this time?',
+    date_posted: 'Nov 19th, 2017',
+  },
 ];

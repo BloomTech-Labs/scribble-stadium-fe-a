@@ -1,9 +1,10 @@
 import React from 'react';
-import { dummyStoryData } from './dummyStoryData';
 import StoryCard from './StoryCard';
 import './storyManager.css';
 
-const StoriesList = () => {
+const StoriesList = props => {
+  const { dummyStoryData } = props;
+
   return (
     <div className="cardHolder">
       {dummyStoryData.map(storyData => {
