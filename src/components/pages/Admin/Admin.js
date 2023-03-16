@@ -8,8 +8,11 @@ import { dummyStoryData } from './StoryManager/dummyStoryData';
 const Admin = () => {
   return (
     <div className="main">
-      <StoryManager dummyStoryData={dummyStoryData} />
-      <ParentFooter />
+      <StoryManager storyData={dummyStoryData} />
+
+      <footer>
+        <ParentFooter />
+      </footer>
     </div>
   );
 };

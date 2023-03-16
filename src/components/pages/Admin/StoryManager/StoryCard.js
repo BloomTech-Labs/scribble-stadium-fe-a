@@ -57,7 +57,7 @@ const StoryCard = props => {
       >
         <p>Author: {storyData.author}</p>
         <p>Description: {storyData.description}</p>
-        <p>Date Posted: {storyData.date_posted}</p>
+        <p>Date Posted: {storyData.created_at.substring(0, 10)}</p>
       </Card>
       <Modal style={{}} open={modalOpen} onOk={submit} onCancel={onCancel}>
         <h2>Edit Story</h2>

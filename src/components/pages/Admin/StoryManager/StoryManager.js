@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import 'antd/dist/antd.css';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import StoriesList from '../StoryManager/StoriesList';
 import './storyManager.css';
+import axios from 'axios';
 
 const StoryManager = props => {
   const [addButtonState, setAddButtonState] = useState(false);
-  const { dummyStoryData } = props;
+  const [storyData, setStoryData] = useState([]);
+  // const { storyData } = props;
+
+  useEffect(() => {
+    // axios.get('http://localhost:8000/stories', {
+    //   headers: {
+    //     Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
+    //   },
+    // })
+    axios
+      .get('http://localhost:8000/stories')
+      .then(res => {
+        console.log('res', res);
+        setStoryData(res.data);
+      })
+      .catch(err => console.log('err', err));
+  }, []);
 
   return (
     <div className="story-manager">
@@ -43,7 +60,7 @@ const StoryManager = props => {
         </div>
       </div>
       <div className="library-right">
-        <StoriesList dummyStoryData={dummyStoryData} />
+        <StoriesList storyData={storyData} />
       </div>
     </div>
   );
