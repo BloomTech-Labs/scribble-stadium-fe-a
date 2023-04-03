@@ -10,14 +10,8 @@ import axios from 'axios';
 const StoryManager = props => {
   const [addButtonState, setAddButtonState] = useState(false);
   const [storyData, setStoryData] = useState([]);
-  // const { storyData } = props;
 
   useEffect(() => {
-    // axios.get('http://localhost:8000/stories', {
-    //   headers: {
-    //     Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
-    //   },
-    // })
     axios
       .get('http://localhost:8000/stories')
       .then(res => {

@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import 'antd/dist/antd.css';
 import { Card, Button, Modal, Form, Input } from 'antd';
 const { TextArea } = Input;
 
-const initialFormValues = {
-  title: 'enter title here',
-  author: 'enter author',
-  description: 'enter description',
-};
-
 const StoryCard = props => {
   const { storyData } = props;
   const [modalOpen, setModalOpen] = useState(false);
+  const { id } = useParams();
 
   const displayModal = () => {
     console.log('displayModal');
@@ -22,19 +19,14 @@ const StoryCard = props => {
     setModalOpen(false);
   };
 
-  // const handleChanges = e => {
-  //   setFormValues(e.target.value);
-  // };
-
   const submit = e => {
     e.preventDefault();
     console.log('changes made');
-    // setprops({
-    //   ...props,
-    //   props[title]:
-
-    // });
-    // console.log([...props]);
+    axios.put(`localhost:8000/stories${id}`, {
+      title: storyData.title,
+      author: storyData.author,
+      description: storyData.descriptionls,
+    });
   };
 
   const editBtnStyle = {
@@ -67,32 +59,20 @@ const StoryCard = props => {
           }}
         >
           <Form.Item label="Title" name="title">
-            <Input
-              type="text"
-              name="title"
-              // onChange={event => handleChanges(event)}
-              defaultValue={storyData.title}
-            />
+            <Input type="text" name="title" defaultValue={storyData.title} />
           </Form.Item>
           <Form.Item label="Author" name="author">
-            <Input
-              type="text"
-              name="author"
-              // onChange={event => handleChanges(event)}
-              defaultValue={storyData.author}
-            />
+            <Input type="text" name="author" defaultValue={storyData.author} />
           </Form.Item>
           <Form.Item label="Description" name="description">
             <TextArea
               type="text"
               name="description"
               rows={13}
-              // onChange={event => handleChanges(event)}
               defaultValue={storyData.description}
             />
           </Form.Item>
         </Form>
-        {/* <Button onClick={() => submit}>Submit</Button> */}
       </Modal>
     </div>
   );
